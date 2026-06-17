@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Record Operations - PulseLog Mini</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#515f74",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-low": "#f2f4f6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "outline": "#76777d",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#0b1c30",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed": "#d3e4fe",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "tertiary": "#000000",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "on-surface-variant": "#45464d",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "primary": "#000000",
+                        "on-tertiary-container": "#75859d",
+                        "secondary-fixed": "#d5e3fd",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-container": "#57657b",
+                        "surface-bright": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#d5e3fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-dim": "#d8dadc",
+                        "surface-tint": "#565e74",
+                        "surface-container": "#eceef0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "row-height-standard": "40px",
+                        "element-gap": "8px",
+                        "container-padding": "16px",
+                        "row-height-dense": "32px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-metric": ["Inter"],
+                        "table-data": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-metric": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "table-data": ["13px", { "lineHeight": "16px", "fontWeight": "450" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean look in data tables */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar -->
+<nav class="bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center h-row-height-standard w-full px-container-padding shrink-0 z-10">
+<div class="flex items-center gap-6">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">PulseLog Mini</span>
+<div class="hidden md:flex items-center h-full gap-4">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 h-full flex items-center pt-1 hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80" href="#">Records</a>
+<a class="text-secondary h-full flex items-center hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 text-headline-sm font-headline-sm" href="#">Insights</a>
+<a class="text-secondary h-full flex items-center hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 text-headline-sm font-headline-sm" href="#">Settings</a>
+</div>
+</div>
+<div class="flex items-center gap-element-gap">
+<button class="w-[32px] h-[32px] flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-secondary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-[32px] h-[32px] flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors text-secondary">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="flex-1 flex overflow-hidden w-full relative">
+<!-- Left Canvas (Data View) -->
+<div class="flex-1 flex flex-col overflow-y-auto no-scrollbar p-container-padding gap-container-padding bg-surface">
+<!-- Header & Actions -->
+<header class="flex justify-between items-center shrink-0">
+<h1 class="text-display-metric font-display-metric text-on-surface">Record Operations</h1>
+<div class="flex gap-element-gap">
+<button class="h-row-height-dense px-4 bg-surface-container-lowest text-secondary border border-outline-variant rounded hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+<span class="text-body-sm font-body-sm font-medium">Retry Load</span>
+</button>
+<button class="h-row-height-dense px-4 bg-primary text-on-primary rounded hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="text-body-sm font-body-sm font-medium">Create Record</span>
+</button>
+</div>
+</header>
+<!-- Summary Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-element-gap shrink-0">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex flex-col justify-center">
+<span class="text-label-caps font-label-caps text-secondary mb-1">TOTAL RECORDS</span>
+<span class="text-display-metric font-display-metric text-on-surface">24,892</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex flex-col justify-center">
+<span class="text-label-caps font-label-caps text-secondary mb-1">ACTIVE EVENTS</span>
+<span class="text-display-metric font-display-metric text-on-surface">1,405</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-4 flex flex-col justify-center relative overflow-hidden">
+<div class="absolute right-0 bottom-0 w-16 h-16 bg-primary-fixed rounded-tl-full opacity-20"></div>
+<span class="text-label-caps font-label-caps text-secondary mb-1">SUCCESS RATE</span>
+<div class="flex items-baseline gap-2">
+<span class="text-display-metric font-display-metric text-on-surface">99.8%</span>
+<span class="text-body-sm font-body-sm text-secondary">+0.2%</span>
+</div>
+</div>
+</div>
+<!-- Utilities / Filters -->
+<div class="flex gap-element-gap items-center shrink-0 w-full bg-surface-container-lowest p-2 border border-outline-variant rounded-lg">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-secondary text-[18px]">search</span>
+<input class="w-full h-[32px] pl-8 pr-3 text-body-sm font-body-sm bg-transparent border-none focus:ring-2 focus:ring-primary focus:border-transparent rounded" placeholder="Search records... (⌘K)" type="text"/>
+</div>
+<div class="w-px h-6 bg-outline-variant mx-2"></div>
+<select class="h-[32px] bg-transparent border-none text-body-sm font-body-sm text-secondary focus:ring-0 cursor-pointer pr-8">
+<option>All Statuses</option>
+<option>Success</option>
+<option>Pending</option>
+<option>Failed</option>
+</select>
+<select class="h-[32px] bg-transparent border-none text-body-sm font-body-sm text-secondary focus:ring-0 cursor-pointer pr-8">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+<option>All Time</option>
+</select>
+</div>
+<!-- Data Table Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg flex-1 overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr class="h-row-height-dense">
+<th class="px-4 text-label-caps font-label-caps text-secondary w-[120px]">Status</th>
+<th class="px-4 text-label-caps font-label-caps text-secondary">Record ID</th>
+<th class="px-4 text-label-caps font-label-caps text-secondary">Target System</th>
+<th class="px-4 text-label-caps font-label-caps text-secondary">Latest Event</th>
+<th class="px-4 text-label-caps font-label-caps text-secondary w-[80px] text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-table-data text-table-data text-on-surface">
+<!-- Row 1: Selected -->
+<tr class="h-row-height-dense border-b border-surface-variant bg-secondary-container bg-opacity-30 cursor-pointer hover:bg-secondary-container hover:bg-opacity-50 transition-colors">
+<td class="px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded h-[20px] bg-surface-container-highest text-secondary text-[11px] font-medium tracking-wide">PENDING</span>
+</td>
+<td class="px-4 font-medium">REC-992A-401</td>
+<td class="px-4 text-secondary">Payment Gateway Alpha</td>
+<td class="px-4 text-secondary">2023-10-27 14:32:01 UTC</td>
+<td class="px-4 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="h-row-height-dense border-b border-surface-variant cursor-pointer hover:bg-surface-container-low transition-colors">
+<td class="px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded h-[20px] bg-[#e6f4ea] text-[#137333] text-[11px] font-medium tracking-wide">SUCCESS</span>
+</td>
+<td class="px-4">REC-881B-102</td>
+<td class="px-4 text-secondary">User Sync Engine</td>
+<td class="px-4 text-secondary">2023-10-27 14:30:45 UTC</td>
+<td class="px-4 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="h-row-height-dense border-b border-surface-variant cursor-pointer hover:bg-surface-container-low transition-colors">
+<td class="px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded h-[20px] bg-error-container text-on-error-container text-[11px] font-medium tracking-wide">FAILED</span>
+</td>
+<td class="px-4">REC-770C-993</td>
+<td class="px-4 text-secondary">Legacy Database</td>
+<td class="px-4 text-secondary">2023-10-27 14:28:12 UTC</td>
+<td class="px-4 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="h-row-height-dense border-b border-surface-variant cursor-pointer hover:bg-surface-container-low transition-colors">
+<td class="px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded h-[20px] bg-[#e6f4ea] text-[#137333] text-[11px] font-medium tracking-wide">SUCCESS</span>
+</td>
+<td class="px-4">REC-665D-221</td>
+<td class="px-4 text-secondary">Payment Gateway Alpha</td>
+<td class="px-4 text-secondary">2023-10-27 14:15:00 UTC</td>
+<td class="px-4 text-right">
+<button class="text-secondary hover:text-primary"><span class="material-symbols-outlined text-[16px]">more_horiz</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Canvas: Details Drawer (Fixed to Right) -->
+<aside class="w-[320px] bg-surface-container-lowest border-l border-outline-variant shadow-[0_0_8px_rgba(0,0,0,0.05)] flex flex-col shrink-0 relative z-20">
+<!-- Drawer Header -->
+<div class="h-row-height-standard px-4 border-b border-outline-variant flex items-center justify-between shrink-0 bg-surface-container-lowest">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Record Details</h2>
+<button class="text-secondary hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Drawer Body (Scrollable) -->
+<div class="flex-1 overflow-y-auto p-4 flex flex-col gap-6 no-scrollbar">
+<!-- Status & Title -->
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded h-[20px] bg-surface-container-highest text-secondary text-[11px] font-medium tracking-wide">PENDING</span>
+<span class="text-body-sm font-body-sm text-secondary">Execution #401</span>
+</div>
+<h3 class="text-display-metric font-display-metric text-on-surface leading-tight">REC-992A-401</h3>
+</div>
+<!-- Metadata Grid -->
+<div class="grid grid-cols-2 gap-y-4 gap-x-2 border-t border-b border-surface-variant py-4">
+<div class="flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-secondary">TARGET SYSTEM</span>
+<span class="text-body-sm font-body-sm text-on-surface">Payment Gateway Alpha</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-secondary">INITIATED BY</span>
+<span class="text-body-sm font-body-sm text-on-surface">System Auto-Scheduler</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-secondary">START TIME</span>
+<span class="text-body-sm font-body-sm text-on-surface">14:32:01 UTC</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-secondary">TIMEOUT LIMIT</span>
+<span class="text-body-sm font-body-sm text-on-surface">30,000 ms</span>
+</div>
+</div>
+<!-- Payload Preview (Simulated Code Block) -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-label-caps font-label-caps text-secondary">PAYLOAD PREVIEW</span>
+<button class="text-primary text-[11px] font-semibold hover:underline">Copy JSON</button>
+</div>
+<div class="bg-surface p-3 rounded border border-outline-variant font-mono text-[11px] text-secondary overflow-x-auto whitespace-pre">
+{
+  "transaction_id": "tx_889102",
+  "amount": 250.00,
+  "currency": "USD",
+  "routing_strategy": "optimistic",
+  "flags": {
+    "retry_enabled": true
+  }
+}
+                    </div>
+</div>
+</div>
+<!-- Drawer Footer -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-lowest shrink-0 flex gap-2">
+<button class="flex-1 h-row-height-dense bg-surface-container-highest text-on-surface-variant font-body-md text-body-md rounded border border-outline-variant hover:bg-surface-container-low transition-colors">Cancel Op</button>
+<button class="flex-1 h-row-height-dense bg-primary text-on-primary font-body-md text-body-md rounded hover:bg-on-primary-fixed-variant transition-colors shadow-sm">Force Sync</button>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant flex justify-between items-center h-row-height-dense w-full px-container-padding shrink-0 transition-opacity duration-150 z-10">
+<div class="text-on-surface-variant text-label-caps font-label-caps font-bold">
+            PulseLog Mini v1.0.4 • System Operational
+        </div>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary text-label-caps font-label-caps transition-colors" href="#">Status</a>
+<a class="text-on-surface-variant hover:text-primary text-label-caps font-label-caps transition-colors" href="#">Documentation</a>
+</div>
+</footer>
+</body></html>

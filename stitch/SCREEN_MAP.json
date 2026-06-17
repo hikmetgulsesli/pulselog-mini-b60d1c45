@@ -1,0 +1,47 @@
+[
+  {
+    "screenId": "71baf77331854461a9b36d11609486cc",
+    "name": "Settings and Preferences - PulseLog Mini",
+    "type": "settings",
+    "description": "Settings and Preferences - PulseLog Mini screen",
+    "surfaceIds": [
+      "SURF_SETTINGS_AND_PREFERENCES"
+    ]
+  },
+  {
+    "screenId": "746d0dbf09f34c3b9287b67279da3522",
+    "name": "Insights - PulseLog Mini",
+    "type": "app-screen",
+    "description": "Insights - PulseLog Mini screen",
+    "surfaceIds": [
+      "SURF_INSIGHTS"
+    ]
+  },
+  {
+    "screenId": "3b44f21cb50b4ee29d4df782ac619ad2",
+    "name": "Record Editor - PulseLog Mini",
+    "type": "form",
+    "description": "Record Editor - PulseLog Mini screen",
+    "surfaceIds": [
+      "SURF_RECORD_EDITOR"
+    ]
+  },
+  {
+    "screenId": "32d2f6d26d50423eb8a026b5b1ca2040",
+    "name": "Empty and Error Recovery - PulseLog Mini",
+    "type": "error",
+    "description": "Empty and Error Recovery - PulseLog Mini screen",
+    "surfaceIds": [
+      "SURF_EMPTY_AND_ERROR_RECOVERY"
+    ]
+  },
+  {
+    "screenId": "3027f28cd77e4d53b1865fb2bcb3cc9a",
+    "name": "Record Operations - PulseLog Mini",
+    "type": "app-screen",
+    "description": "Record Operations - PulseLog Mini screen",
+    "surfaceIds": [
+      "SURF_RECORD_OPERATIONS"
+    ]
+  }
+]

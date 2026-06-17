@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings and Preferences - PulseLog Mini</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#515f74",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-low": "#f2f4f6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "outline": "#76777d",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#0b1c30",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed": "#d3e4fe",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "tertiary": "#000000",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "on-surface-variant": "#45464d",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "primary": "#000000",
+                        "on-tertiary-container": "#75859d",
+                        "secondary-fixed": "#d5e3fd",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-container": "#57657b",
+                        "surface-bright": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#d5e3fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-dim": "#d8dadc",
+                        "surface-tint": "#565e74",
+                        "surface-container": "#eceef0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "row-height-standard": "40px",
+                        "element-gap": "8px",
+                        "container-padding": "16px",
+                        "row-height-dense": "32px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-metric": ["Inter"],
+                        "table-data": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-metric": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "table-data": ["13px", { "lineHeight": "16px", "fontWeight": "450" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-sm">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant w-full fixed top-0 z-50 flex justify-between items-center h-row-height-standard px-container-padding">
+<div class="flex items-center gap-container-padding">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">PulseLog Mini</span>
+<div class="hidden md:flex gap-element-gap items-end h-full">
+<a class="text-secondary hover:bg-surface-container-low transition-colors px-2 py-1 h-full flex items-center cursor-pointer active:opacity-80" href="#">
+<span class="text-label-caps font-label-caps">Records</span>
+</a>
+<a class="text-secondary hover:bg-surface-container-low transition-colors px-2 py-1 h-full flex items-center cursor-pointer active:opacity-80" href="#">
+<span class="text-label-caps font-label-caps">Insights</span>
+</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 h-full flex items-center cursor-pointer active:opacity-80" href="#">
+<span class="text-label-caps font-label-caps">Settings</span>
+</a>
+</div>
+</div>
+<div class="flex items-center gap-element-gap">
+<button class="text-primary hover:bg-surface-container-low p-1 rounded transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+</button>
+<button class="text-primary hover:bg-surface-container-low p-1 rounded transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<button class="text-primary hover:bg-surface-container-low p-1 rounded transition-colors cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-[40px] mb-[32px] overflow-y-auto p-container-padding md:p-6 lg:p-8 flex justify-center">
+<div class="w-full max-w-3xl flex flex-col gap-6">
+<!-- Header Section -->
+<div class="flex justify-between items-center pb-4 border-b border-outline-variant">
+<div>
+<h1 class="text-display-metric font-display-metric text-on-surface">Settings and Preferences</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Manage workflow adjustments, views, and defaults.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 h-row-height-dense bg-surface-container-low text-secondary font-label-caps text-label-caps rounded hover:bg-surface-container-highest transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+                        Reset Defaults
+                    </button>
+<button class="px-4 h-row-height-dense bg-primary text-on-primary font-label-caps text-label-caps rounded hover:bg-secondary transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">save</span>
+                        Save Preferences
+                    </button>
+</div>
+</div>
+<!-- Success Banner (Hidden by default, shown for demonstration) -->
+<div class="bg-[#EFF6FF] border border-[#BFDBFE] p-3 rounded flex items-center gap-3 text-[#1E3A8A]">
+<span class="material-symbols-outlined fill text-[20px] text-[#2563EB]">check_circle</span>
+<span class="text-body-sm font-body-sm font-medium">Preferences saved successfully.</span>
+</div>
+<!-- Grid Layout for Settings -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Density & View Preferences -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-4 flex flex-col gap-4">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2 border-b border-surface-variant pb-2">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                        Display Options
+                    </h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<label class="text-body-md font-body-md text-on-surface">Compact Density</label>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-9 h-5 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-2">Reduces padding to show more data.</p>
+<div class="flex flex-col gap-2">
+<label class="text-body-sm font-body-sm text-on-surface">Default View</label>
+<div class="flex border border-outline-variant rounded overflow-hidden">
+<button class="flex-1 h-row-height-dense bg-primary-fixed text-primary font-body-sm text-body-sm font-medium flex items-center justify-center gap-2 border-r border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">table_chart</span>
+                                    Table
+                                </button>
+<button class="flex-1 h-row-height-dense bg-surface-container-lowest text-on-surface-variant font-body-sm text-body-sm flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">view_column</span>
+                                    Board
+                                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Saved Filters -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-4 flex flex-col gap-4">
+<div class="flex justify-between items-center border-b border-surface-variant pb-2">
+<h2 class="text-headline-sm font-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                            Saved Filters
+                        </h2>
+<button class="text-primary hover:text-secondary text-body-sm font-body-sm font-medium">Manage</button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center p-2 hover:bg-surface-container-low rounded border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[16px] text-secondary">label</span>
+<span class="text-body-md font-body-md text-on-surface">Critical Issues (P1)</span>
+</div>
+<span class="text-label-caps font-label-caps text-on-surface-variant bg-surface-container-high px-2 py-1 rounded">DEFAULT</span>
+</div>
+<div class="flex justify-between items-center p-2 hover:bg-surface-container-low rounded border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[16px] text-secondary">label</span>
+<span class="text-body-md font-body-md text-on-surface">My Active Records</span>
+</div>
+<button class="text-on-surface-variant hover:text-error opacity-0 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+</button>
+</div>
+<div class="flex justify-between items-center p-2 hover:bg-surface-container-low rounded border border-transparent hover:border-outline-variant transition-all cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[16px] text-secondary">label</span>
+<span class="text-body-md font-body-md text-on-surface">Recent Updates (24h)</span>
+</div>
+</div>
+<button class="mt-2 h-row-height-dense border border-dashed border-outline-variant text-secondary rounded flex items-center justify-center gap-2 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="text-body-sm font-body-sm">Create New Filter</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant w-full fixed bottom-0 z-50 flex justify-between items-center h-row-height-dense px-container-padding">
+<span class="text-label-caps font-label-caps text-on-surface-variant">PulseLog Mini v1.0.4 • System Operational</span>
+<div class="flex gap-4">
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-opacity duration-150" href="#">Status</a>
+<a class="text-label-caps font-label-caps text-on-surface-variant hover:text-primary transition-opacity duration-150" href="#">Documentation</a>
+</div>
+</footer>
+</body></html>

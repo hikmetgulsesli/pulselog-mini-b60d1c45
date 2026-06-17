@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PulseLog Mini - Records Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#2d3133",
+                      "secondary": "#515f74",
+                      "on-secondary-fixed-variant": "#3a485c",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "on-primary-fixed": "#131b2e",
+                      "surface-container-low": "#f2f4f6",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "outline": "#76777d",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "primary-fixed": "#dae2fd",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#0b1c30",
+                      "on-primary-container": "#7c839b",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "tertiary-fixed": "#d3e4fe",
+                      "secondary-fixed-dim": "#b9c7e0",
+                      "tertiary": "#000000",
+                      "surface-container-high": "#e6e8ea",
+                      "background": "#f7f9fb",
+                      "on-surface-variant": "#45464d",
+                      "surface": "#f7f9fb",
+                      "on-surface": "#191c1e",
+                      "primary": "#000000",
+                      "on-tertiary-container": "#75859d",
+                      "secondary-fixed": "#d5e3fd",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-secondary-fixed": "#0d1c2f",
+                      "outline-variant": "#c6c6cd",
+                      "on-secondary-container": "#57657b",
+                      "surface-bright": "#f7f9fb",
+                      "surface-variant": "#e0e3e5",
+                      "on-background": "#191c1e",
+                      "secondary-container": "#d5e3fd",
+                      "primary-fixed-dim": "#bec6e0",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#131b2e",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#bec6e0",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-dim": "#d8dadc",
+                      "surface-tint": "#565e74",
+                      "surface-container": "#eceef0"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "row-height-standard": "40px",
+                      "element-gap": "8px",
+                      "container-padding": "16px",
+                      "row-height-dense": "32px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-metric": ["Inter"],
+                      "table-data": ["Inter"],
+                      "label-caps": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-metric": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "table-data": ["13px", {"lineHeight": "16px", "fontWeight": "450"}],
+                      "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        /* Utilitarian grid background pattern */
+        .grid-bg {
+            background-size: 24px 24px;
+            background-image: 
+                linear-gradient(to right, #eceef0 1px, transparent 1px),
+                linear-gradient(to bottom, #eceef0 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md flex flex-col min-h-screen">
+<!-- TopNavBar: Shared Component -->
+<header class="bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center h-row-height-standard w-full px-container-padding sticky top-0 z-50">
+<div class="flex items-center gap-6">
+<!-- Brand Logo -->
+<div class="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">PulseLog Mini</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex gap-6 h-full items-end">
+<!-- Active State: Records -->
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-caps font-label-caps h-full flex items-center pt-1" href="#">
+                    Records
+                </a>
+<!-- Inactive States -->
+<a class="text-secondary text-label-caps font-label-caps hover:bg-surface-container-low transition-colors h-full flex items-center pb-1 border-b-2 border-transparent" href="#">
+                    Insights
+                </a>
+<a class="text-secondary text-label-caps font-label-caps hover:bg-surface-container-low transition-colors h-full flex items-center pb-1 border-b-2 border-transparent" href="#">
+                    Settings
+                </a>
+</nav>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-low p-1 rounded-full transition-colors flex items-center justify-center cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-primary hover:bg-surface-container-low p-1 rounded-full transition-colors flex items-center justify-center cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-container-padding py-8 grid-bg relative">
+<!-- Page Header -->
+<div class="mb-8 flex justify-between items-end">
+<div>
+<h1 class="text-display-metric font-display-metric text-primary">System Monitoring</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Real-time status of data streams and record repositories.</p>
+</div>
+<!-- Search / Utility Bar (Style Guidance) -->
+<div class="hidden md:flex items-center bg-surface-container-lowest border border-outline-variant rounded h-[32px] px-3 focus-within:border-primary focus-within:ring-2 focus-within:ring-primary-fixed transition-all w-64 shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm font-body-sm w-full p-0 text-on-surface outline-none" placeholder="Search records..." type="text"/>
+<span class="text-label-caps font-label-caps text-outline ml-2">⌘K</span>
+</div>
+</div>
+<!-- Bento Grid Layout for States -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- ERROR STATE CARD (Column 1 - Priority Issue) -->
+<div class="col-span-1 md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm flex flex-col justify-between h-[320px] relative overflow-hidden">
+<!-- Top Accent Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-error"></div>
+<div class="flex flex-col items-start text-left z-10">
+<div class="h-12 w-12 rounded bg-error-container flex items-center justify-center mb-4 border border-error/20">
+<span class="material-symbols-outlined text-error text-[24px]" style="font-variation-settings: 'FILL' 1;">cloud_off</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-2">Connection Timeout</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-6 max-w-md">
+                        The system encountered an unexpected interruption while attempting to fetch the latest insights payload. The upstream data service is currently unreachable.
+                    </p>
+<!-- Technical Details Box -->
+<div class="bg-surface-container-low border border-outline-variant rounded p-3 w-full mb-6 font-mono">
+<div class="flex justify-between items-center mb-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant">Diagnostic Information</span>
+<button class="text-label-caps font-label-caps text-primary hover:underline cursor-pointer">Copy Log</button>
+</div>
+<div class="text-table-data font-table-data text-secondary">
+<span class="block">ERR_CODE: 504_GATEWAY_TIMEOUT</span>
+<span class="block">NODE: us-east-worker-09</span>
+<span class="block">TIMESTAMP: <span id="current-time"></span></span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-3 mt-auto">
+<!-- ACT_RETRY_LOAD as Primary in this context -->
+<button class="bg-primary hover:bg-inverse-surface text-on-primary text-body-sm font-headline-sm h-row-height-dense px-4 rounded transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">refresh</span>
+                        Retry Loading
+                    </button>
+<button class="bg-transparent hover:bg-surface-container text-on-surface text-body-sm font-headline-sm h-row-height-dense px-4 rounded transition-colors border border-outline-variant">
+                        View System Status
+                    </button>
+</div>
+</div>
+<!-- EMPTY STATE CARD (Column 2 - Standard Flow) -->
+<div class="col-span-1 md:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-lg p-6 shadow-sm flex flex-col justify-center items-center text-center h-[320px]">
+<div class="relative mb-6">
+<!-- Abstract decorative circles -->
+<div class="absolute inset-0 bg-surface-container-high rounded-full blur-xl opacity-50 scale-150"></div>
+<div class="h-16 w-16 rounded-full bg-surface-container flex items-center justify-center relative z-10 border border-outline-variant/50">
+<span class="material-symbols-outlined text-secondary text-[32px]" style="font-variation-settings: 'FILL' 0;">inbox_customize</span>
+</div>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface mb-2">No Records Found</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-8 max-w-[280px]">
+                    Your current filter criteria yielded no results, or this repository is entirely empty. Adjust your parameters or populate the system to begin.
+                </p>
+<!-- Actions -->
+<div class="flex items-center justify-center gap-3">
+<!-- ACT_CREATE_RECORD as Secondary conceptually, but Primary visual weight here to guide user -->
+<button class="bg-primary hover:bg-inverse-surface text-on-primary text-body-sm font-headline-sm h-row-height-dense px-4 rounded transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                        Create Record
+                    </button>
+<!-- Clear Filter Action (Ghost button) -->
+<button class="bg-transparent hover:bg-surface-container text-secondary text-body-sm font-headline-sm h-row-height-dense px-4 rounded transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_alt_off</span>
+                        Clear Filters
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer: Shared Component -->
+<footer class="bg-surface-container-low border-t border-outline-variant flex justify-between items-center h-row-height-dense w-full px-container-padding mt-auto transition-opacity duration-150">
+<div class="text-on-surface-variant text-label-caps font-label-caps">
+            PulseLog Mini v1.0.4 • System Operational
+        </div>
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant text-label-caps font-label-caps hover:text-primary transition-colors" href="#">Status</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps hover:text-primary transition-colors" href="#">Documentation</a>
+</div>
+</footer>
+<script>
+        // Set current timestamp for error state realism
+        document.getElementById('current-time').textContent = new Date().toISOString();
+    </script>
+</body></html>

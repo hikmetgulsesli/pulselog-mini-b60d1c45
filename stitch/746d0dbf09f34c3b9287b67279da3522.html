@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Insights - PulseLog Mini</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#515f74",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-low": "#f2f4f6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "outline": "#76777d",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "primary-fixed": "#dae2fd",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#0b1c30",
+                        "on-primary-container": "#7c839b",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "tertiary-fixed": "#d3e4fe",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "tertiary": "#000000",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "on-surface-variant": "#45464d",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "primary": "#000000",
+                        "on-tertiary-container": "#75859d",
+                        "secondary-fixed": "#d5e3fd",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-container": "#57657b",
+                        "surface-bright": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "secondary-container": "#d5e3fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-dim": "#d8dadc",
+                        "surface-tint": "#565e74",
+                        "surface-container": "#eceef0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "row-height-standard": "40px",
+                        "element-gap": "8px",
+                        "container-padding": "16px",
+                        "row-height-dense": "32px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-metric": ["Inter"],
+                        "table-data": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-metric": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "table-data": ["13px", {"lineHeight": "16px", "fontWeight": "450"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for dense areas */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #c6c6cd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-sm text-body-sm">
+<!-- TopNavBar Shared Component -->
+<header class="bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center h-row-height-standard w-full px-container-padding sticky top-0 z-40">
+<!-- Brand -->
+<div class="flex items-center gap-container-padding">
+<span class="text-headline-sm font-headline-sm font-bold text-primary">PulseLog Mini</span>
+</div>
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-end h-full gap-container-padding pt-2">
+<a class="text-secondary text-label-caps font-label-caps hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 px-2 py-1 rounded-t h-full flex items-center" href="#">
+                Records
+            </a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 text-label-caps font-label-caps hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 px-2 pt-1 h-full flex items-center" href="#">
+                Insights
+            </a>
+<a class="text-secondary text-label-caps font-label-caps hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 px-2 py-1 rounded-t h-full flex items-center" href="#">
+                Settings
+            </a>
+</nav>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-element-gap">
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-1 rounded" style="font-variation-settings: 'FILL' 0;">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:bg-surface-container-low transition-colors cursor-pointer active:opacity-80 p-1 rounded" style="font-variation-settings: 'FILL' 0;">account_circle</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col w-full max-w-[1200px] mx-auto px-container-padding py-[24px] gap-[24px]">
+<!-- Header Actions -->
+<div class="flex justify-between items-end w-full">
+<div>
+<h1 class="text-display-metric font-display-metric text-on-surface">Insights</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">System activity and state distribution.</p>
+</div>
+<div class="flex items-center gap-element-gap">
+<button class="flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded h-[32px] px-3 hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[18px] mr-2" style="font-variation-settings: 'FILL' 0;">filter_list</span>
+<span class="text-label-caps font-label-caps text-on-surface">Filter</span>
+</button>
+<button class="flex items-center justify-center bg-primary text-on-primary rounded h-[32px] px-4 hover:opacity-90 transition-opacity">
+<span class="text-label-caps font-label-caps">Export Summary</span>
+</button>
+</div>
+</div>
+<!-- Metric Cards Row -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-element-gap">
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-3 flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant">Active Streams</span>
+<div class="flex items-baseline gap-2">
+<span class="text-display-metric font-display-metric text-on-surface">142</span>
+<span class="text-body-sm font-body-sm text-secondary">+12%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-3 flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant">Avg Latency</span>
+<div class="flex items-baseline gap-2">
+<span class="text-display-metric font-display-metric text-on-surface">48ms</span>
+<span class="text-body-sm font-body-sm text-secondary">-2ms</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-3 flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant">Error Rate</span>
+<div class="flex items-baseline gap-2">
+<span class="text-display-metric font-display-metric text-on-surface">0.04%</span>
+<span class="text-body-sm font-body-sm text-error">Stable</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-3 flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-on-surface-variant">Orphaned Records</span>
+<div class="flex items-baseline gap-2">
+<span class="text-display-metric font-display-metric text-on-surface">7</span>
+<span class="material-symbols-outlined text-[16px] text-error">warning</span>
+</div>
+</div>
+</div>
+<!-- Main Workspace: Feed & Context -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-[16px] flex-grow">
+<!-- Left Column: Activity Feed -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded flex flex-col overflow-hidden">
+<div class="bg-surface-container-low border-b border-outline-variant px-container-padding py-2 flex justify-between items-center h-row-height-standard">
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Recent Activity</h2>
+<span class="text-label-caps font-label-caps text-on-surface-variant">Last 24 Hours</span>
+</div>
+<div class="flex flex-col overflow-y-auto max-h-[500px]">
+<!-- Activity Item -->
+<div class="flex items-center px-container-padding border-b border-surface-variant h-row-height-standard hover:bg-surface-bright transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px] text-secondary w-[32px]" style="font-variation-settings: 'FILL' 0;">sync</span>
+<div class="flex-grow grid grid-cols-4 gap-2 items-center">
+<span class="col-span-2 text-table-data font-table-data text-on-surface truncate">Batch Sync Job #8892</span>
+<span class="col-span-1 text-table-data font-table-data text-on-surface-variant">Sys_Admin</span>
+<span class="col-span-1 text-right text-label-caps font-label-caps text-secondary">2m ago</span>
+</div>
+<div class="ml-4 w-[60px] flex justify-end">
+<span class="bg-primary-fixed text-on-primary-fixed text-label-caps font-label-caps px-2 py-[2px] rounded-sm">Success</span>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex items-center px-container-padding border-b border-surface-variant h-row-height-standard hover:bg-surface-bright transition-colors cursor-default bg-error-container/20">
+<span class="material-symbols-outlined text-[18px] text-error w-[32px]" style="font-variation-settings: 'FILL' 0;">error</span>
+<div class="flex-grow grid grid-cols-4 gap-2 items-center">
+<span class="col-span-2 text-table-data font-table-data text-on-surface truncate">Payload validation failed</span>
+<span class="col-span-1 text-table-data font-table-data text-on-surface-variant">API_Gateway</span>
+<span class="col-span-1 text-right text-label-caps font-label-caps text-secondary">14m ago</span>
+</div>
+<div class="ml-4 w-[60px] flex justify-end">
+<span class="bg-error-container text-on-error-container text-label-caps font-label-caps px-2 py-[2px] rounded-sm">Failed</span>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex items-center px-container-padding border-b border-surface-variant h-row-height-standard hover:bg-surface-bright transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px] text-secondary w-[32px]" style="font-variation-settings: 'FILL' 0;">update</span>
+<div class="flex-grow grid grid-cols-4 gap-2 items-center">
+<span class="col-span-2 text-table-data font-table-data text-on-surface truncate">State transition: Idle -&gt; Active</span>
+<span class="col-span-1 text-table-data font-table-data text-on-surface-variant">Worker_Node_04</span>
+<span class="col-span-1 text-right text-label-caps font-label-caps text-secondary">1h ago</span>
+</div>
+<div class="ml-4 w-[60px] flex justify-end">
+<span class="bg-surface-container-highest text-on-surface-variant text-label-caps font-label-caps px-2 py-[2px] rounded-sm">Info</span>
+</div>
+</div>
+<!-- Activity Item -->
+<div class="flex items-center px-container-padding border-b border-surface-variant h-row-height-standard hover:bg-surface-bright transition-colors cursor-default">
+<span class="material-symbols-outlined text-[18px] text-secondary w-[32px]" style="font-variation-settings: 'FILL' 0;">add_circle</span>
+<div class="flex-grow grid grid-cols-4 gap-2 items-center">
+<span class="col-span-2 text-table-data font-table-data text-on-surface truncate">New record ingested [ID:992A]</span>
+<span class="col-span-1 text-table-data font-table-data text-on-surface-variant">Ingest_Stream</span>
+<span class="col-span-1 text-right text-label-caps font-label-caps text-secondary">3h ago</span>
+</div>
+<div class="ml-4 w-[60px] flex justify-end">
+<span class="bg-primary-fixed text-on-primary-fixed text-label-caps font-label-caps px-2 py-[2px] rounded-sm">Success</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Context & Distribution -->
+<div class="md:col-span-4 flex flex-col gap-[16px]">
+<!-- Actionable Hints -->
+<div class="bg-primary-fixed border border-outline-variant rounded p-container-padding flex flex-col gap-2 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[80px]" style="font-variation-settings: 'FILL' 1;">tips_and_updates</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-primary-fixed text-[18px]" style="font-variation-settings: 'FILL' 0;">lightbulb</span>
+<h3 class="text-headline-sm font-headline-sm text-on-primary-fixed">Maintenance Hint</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-primary-fixed-variant leading-relaxed relative z-10">
+                        7 records have been unassigned for over 48 hours. Consider reviewing the orphan queue to maintain data integrity.
+                    </p>
+<button class="mt-2 text-left text-label-caps font-label-caps text-on-primary-fixed font-bold hover:underline self-start w-auto">
+                        Review Records →
+                    </button>
+</div>
+<!-- State Distribution -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-container-padding flex flex-col gap-4 flex-grow">
+<h3 class="text-headline-sm font-headline-sm text-on-surface">State Distribution</h3>
+<div class="flex flex-col gap-3">
+<!-- Bar Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-table-data font-table-data text-on-surface-variant">Active</span>
+<span class="text-table-data font-table-data text-on-surface font-semibold">64%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-[6px]">
+<div class="bg-secondary rounded-full h-[6px] w-[64%]"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-table-data font-table-data text-on-surface-variant">Idle</span>
+<span class="text-table-data font-table-data text-on-surface font-semibold">22%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-[6px]">
+<div class="bg-outline rounded-full h-[6px] w-[22%]"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-table-data font-table-data text-on-surface-variant">Archived</span>
+<span class="text-table-data font-table-data text-on-surface font-semibold">12%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-[6px]">
+<div class="bg-surface-tint rounded-full h-[6px] w-[12%]"></div>
+</div>
+</div>
+<!-- Bar Item -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center">
+<span class="text-table-data font-table-data text-on-surface-variant">Failed</span>
+<span class="text-table-data font-table-data text-error font-semibold">2%</span>
+</div>
+<div class="w-full bg-surface-container-highest rounded-full h-[6px]">
+<div class="bg-error rounded-full h-[6px] w-[2%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shared Component -->
+<footer class="bg-surface-container-low border-t border-outline-variant flex justify-between items-center h-row-height-dense w-full px-container-padding mt-auto">
+<div class="text-on-surface-variant text-label-caps font-label-caps font-bold">
+            PulseLog Mini v1.0.4 • System Operational
+        </div>
+<div class="flex items-center gap-container-padding">
+<a class="text-on-surface-variant text-label-caps font-label-caps hover:text-primary transition-opacity duration-150" href="#">Status</a>
+<a class="text-on-surface-variant text-label-caps font-label-caps hover:text-primary transition-opacity duration-150" href="#">Documentation</a>
+</div>
+</footer>
+</body></html>
